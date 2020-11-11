@@ -73,9 +73,13 @@ function anotherEmployee() {
         name: "continue",
         type: "confirm",
         message: "Do you wish to add another employee?"
-    }).then((data) => {data.continue ? newEmployee() : console.log("Employee list is up to date!")})
+    }).then((data) => {data.continue ? newEmployee() : fileCheck()})
 }
 
+function fileCheck() {
+    if (!fs.existsSync(OUTPUT_DIR)) {fs.mkdirSync(OUTPUT_DIR)}
+        fs.writeFileSync(outputPath, render(employees), "utf-8");
+}
 newEmployee();
 
 // After the user has input all employees desired, call the `render` function (required
