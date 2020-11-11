@@ -14,10 +14,10 @@ const render = require("./lib/htmlRenderer");
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
+let employees = [];
 
+function newEmployee() {
 
-function createEmployee() {
-    // const answers = 
     inquirer
     .prompt([
         {
@@ -37,14 +37,46 @@ function createEmployee() {
         },
         {
             name: "role",
+            type: "rawlist",
+            message: "What is the employee's role?",
+            choices: [ 'Engineer', 'Intern', 'Manager' ]
+        },
+        {
+            name: "school",
             type: "input",
-            message: "What is the employee's role?"
-        }
-    ]).then(answers => console.log(answers))
-    
+            message: "What is the employee's school?",
+            when: (answers) => answers.role === "Intern"
+        },
+        {
+            name: "officeNumber",
+            type: "input",
+            message: "What is the manager's office number?",
+            when: (answers) => answers.role === "Manager"
+        },
+        {
+            name: "github",
+            type: "input",
+            message: "What is the employee's github account?",
+            when: (answers) => answers.role === "Engineer"
+        },
+    ]).then((answers) => {
+        employees.push(answers);
+        console.log(employees);
+        anotherEmployee();
+    })    
 }
 
-createEmployee();
+function anotherEmployee() {
+
+    inquirer
+    .prompt ({
+        name: "continue",
+        type: "confirm",
+        message: "Do you wish to add another employee?"
+    }).then((data) => {data.continue ? newEmployee() : console.log("Employee list is up to date!")})
+}
+
+newEmployee();
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
