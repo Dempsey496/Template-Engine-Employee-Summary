@@ -1,3 +1,4 @@
+const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -25,45 +26,50 @@ function newEmployee() {
             type: "input",
             message: "What is the employee's name?"
         },
-        {
-            name: "id",
-            type: "input",
-            message: "What is the employee's ID?"
-        },
-        {
-            name: "email",
-            type: "input",
-            message: "What is the employee's E-mail?"
-        },
-        {
-            name: "role",
-            type: "rawlist",
-            message: "What is the employee's role?",
-            choices: [ 'Engineer', 'Intern', 'Manager' ]
-        },
-        {
-            name: "school",
-            type: "input",
-            message: "What is the employee's school?",
-            when: (answers) => answers.role === "Intern"
-        },
-        {
-            name: "officeNumber",
-            type: "input",
-            message: "What is the manager's office number?",
-            when: (answers) => answers.role === "Manager"
-        },
-        {
-            name: "github",
-            type: "input",
-            message: "What is the employee's github account?",
-            when: (answers) => answers.role === "Engineer"
-        },
+        // {
+        //     name: "id",
+        //     type: "input",
+        //     message: "What is the employee's ID?"
+        // },
+        // {
+        //     name: "email",
+        //     type: "input",
+        //     message: "What is the employee's E-mail?"
+        // },
+        // {
+        //     name: "role",
+        //     type: "rawlist",
+        //     message: "What is the employee's role?",
+        //     choices: [ 'Engineer', 'Intern', 'Manager' ]
+        // },
+        // {
+        //     name: "school",
+        //     type: "input",
+        //     message: "What is the employee's school?",
+        //     when: (answers) => answers.role === "Intern"
+        // },
+        // {
+        //     name: "officeNumber",
+        //     type: "input",
+        //     message: "What is the manager's office number?",
+        //     when: (answers) => answers.role === "Manager"
+        // },
+        // {
+        //     name: "github",
+        //     type: "input",
+        //     message: "What is the employee's github account?",
+        //     when: (answers) => answers.role === "Engineer"
+        // },
     ]).then((answers) => {
         employees.push(answers);
         console.log(employees);
         anotherEmployee();
     })    
+}
+
+function fileCheck() {
+    if (!fs.existsSync(OUTPUT_DIR)) {fs.mkdirSync(OUTPUT_DIR)}
+        fs.writeFileSync(outputPath, render(employees), "utf-8");
 }
 
 function anotherEmployee() {
@@ -76,10 +82,6 @@ function anotherEmployee() {
     }).then((data) => {data.continue ? newEmployee() : fileCheck()})
 }
 
-function fileCheck() {
-    if (!fs.existsSync(OUTPUT_DIR)) {fs.mkdirSync(OUTPUT_DIR)}
-        fs.writeFileSync(outputPath, render(employees), "utf-8");
-}
 newEmployee();
 
 // After the user has input all employees desired, call the `render` function (required
