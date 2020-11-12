@@ -38,7 +38,11 @@ so that I have quick access to emails and GitHub profiles
 <a name="scrshot"></a>
 
 ## Screenshots
+![Inquirer Prompts in app.js](./assests/inquirer.screenshot.png)
+![Call Back Functions WriteFile](./assests/functions.screenshot.png)
+***
 [CLI Prompts Link to Download](https://drive.google.com/file/d/15j-caWamGFUz8i-UpmDQfcs3w9gh36wb/view?usp=sharing)
+***
 ![Jest Test](./assests/Screenshot_2020-11-11_190852.png)
 
 <a name="tech"></a>

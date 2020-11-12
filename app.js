@@ -69,7 +69,7 @@ function newEmployee() {
             const intern = new Intern (answers.name, answers.id, answers.email, answers.school)
             employees.push(intern);
         }
-        else if (answers.role === "Engineer") {
+        else if(answers.role === "Engineer") {
             const engineer = new Engineer (answers.name, answers.id, answers.email, answers.github)
             employees.push(engineer);
         }
