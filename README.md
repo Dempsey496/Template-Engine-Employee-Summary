@@ -38,7 +38,7 @@ so that I have quick access to emails and GitHub profiles
 
 ## Screenshots
 
-![Jest Test](./assests/Screenshot 2020-11-11 190852.png)
+![Jest Test](/assests/Screenshot 2020-11-11 190852.png)
 
 
 ***
