@@ -26,43 +26,55 @@ function newEmployee() {
             type: "input",
             message: "What is the employee's name?"
         },
-        // {
-        //     name: "id",
-        //     type: "input",
-        //     message: "What is the employee's ID?"
-        // },
-        // {
-        //     name: "email",
-        //     type: "input",
-        //     message: "What is the employee's E-mail?"
-        // },
-        // {
-        //     name: "role",
-        //     type: "rawlist",
-        //     message: "What is the employee's role?",
-        //     choices: [ 'Engineer', 'Intern', 'Manager' ]
-        // },
-        // {
-        //     name: "school",
-        //     type: "input",
-        //     message: "What is the employee's school?",
-        //     when: (answers) => answers.role === "Intern"
-        // },
-        // {
-        //     name: "officeNumber",
-        //     type: "input",
-        //     message: "What is the manager's office number?",
-        //     when: (answers) => answers.role === "Manager"
-        // },
-        // {
-        //     name: "github",
-        //     type: "input",
-        //     message: "What is the employee's github account?",
-        //     when: (answers) => answers.role === "Engineer"
-        // },
+        {
+            name: "id",
+            type: "input",
+            message: "What is the employee's ID?"
+        },
+        {
+            name: "email",
+            type: "input",
+            message: "What is the employee's E-mail?"
+        },
+        {
+            name: "role",
+            type: "rawlist",
+            message: "What is the employee's role?",
+            choices: [ 'Engineer', 'Intern', 'Manager' ]
+        },
+        {
+            name: "school",
+            type: "input",
+            message: "What is the employee's school?",
+            when: (answers) => answers.role === "Intern"
+        },
+        {
+            name: "officeNumber",
+            type: "input",
+            message: "What is the manager's office number?",
+            when: (answers) => answers.role === "Manager"
+        },
+        {
+            name: "github",
+            type: "input",
+            message: "What is the employee's github account?",
+            when: (answers) => answers.role === "Engineer"
+        },
     ]).then((answers) => {
-        employees.push(answers);
-        console.log(employees);
+        if (answers.role === "Manager") {
+            const manager = new Manager (answers.name, answers.id, answers.email, answers.officeNumber)
+            employees.push(manager);
+        } 
+        else if (answers.role === "Intern") {
+            const intern = new Intern (answers.name, answers.id, answers.email, answers.school)
+            employees.push(intern);
+        }
+        else if (answers.role === "Engineer") {
+            const engineer = new Engineer (answers.name, answers.id, answers.email, answers.github)
+            employees.push(engineer);
+        }
+        
+        console.log(answers);
         anotherEmployee();
     })    
 }

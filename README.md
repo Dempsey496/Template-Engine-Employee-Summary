@@ -10,7 +10,8 @@
 1. [Acceptance Criteria](#crit)
 2. [Installation](#inst)
 3. [Screenshots](#scrshot)
-4. [License](#lice)
+4. [Technology Used](#tech)
+5. [License](#lice)
 
 ***
 <a name="crit"></a>
@@ -38,8 +39,18 @@ so that I have quick access to emails and GitHub profiles
 
 ## Screenshots
 
+![CLI Prompts](https://drive.google.com/file/d/15j-caWamGFUz8i-UpmDQfcs3w9gh36wb/view?usp=sharing)
 ![Jest Test](./assests/Screenshot_2020-11-11_190852.png)
 
+<a name="tech"></a>
+
+## Technologies Used
+
+* HTML
+* JavaScript
+* Node.Js
+   * Jest
+   * Inquirer
 
 ***
 <a name="lice"></a>
